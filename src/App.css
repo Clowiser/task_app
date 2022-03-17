@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+body {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  //min-height: 100vh;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.heading{
+  margin: 30px 0;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.input{
+  display: flex;
+  margin: 3% 10% 0 10%;
+  position: relative;
+}
+
+.input_box{
+  border-radius: 50px;
+  width: 100%;
+  padding: 20px 30px;
+  border: none;
+}
+
+.input_box:focus{
+  box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+.button{
+  position: absolute;
+  right: 1px;
+  width: 40px;
+  height: 40px;
+  margin: 8px;
+  border-radius: 50px;
+  border: none;
+  //box-shadow: 0 0 10px #282c34;
+  background-color: #ffcc00;
+  color: white;
+}
+
+.button:hover{
+  background-color: #ffdb4f;
+}
+
+.button:active{
+  transform: scale(0.8);
+}
+
+.container{
+  display: flex;
+}
+
+.todos{
+  background-color: #9dd849 ;
+  border-radius: 20px;
+  width: 50%;
+  margin: 3%;
+}
+
+.todosremove{
+  background-color: #bf4a4a;
+  border-radius: 20px;
+  width: 50%;
+  margin: 3%;
+}
+
+.test{
+  border-radius: 20px;
+  background-color: #ffdb4f;
+  color: #282c34;
+  padding: 8px;
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 5px 10px #5f7a5e;
+}
+
+.titleTask{
+  margin-left: 5%;
+}
+
+.iconsChoice{
+  display: flex;
+  justify-content: right;
+}
+
+.iconsImg{
+  width: 15%;
+}
+
+.iconsImg:active{
+  transform: scale(0.8);
+}
+
+@media (max-width: 700px){
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+  .todos, .todosremove{
+    width: 100%;
+    border-radius: 20px; }
 }
