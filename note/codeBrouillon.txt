@@ -1,0 +1,13 @@
+/*<div className="todos">
+       {toDos.map((todo) => (
+      /*<p className="test" key={t.id}>{t.to do}
+           <SingleTask />
+       </p>))}
+
+     {toDos.map((todo) => (
+       <SingleTask key={todo.id}
+                   todo={todo}
+                   todos={toDos}
+                   setToDos={setToDos}
+                   />))}
+   </div>*/

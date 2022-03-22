@@ -3,6 +3,7 @@ import './App.css';
 import InputField from './components/InputField';
 import {Todo} from "./model";
 import TaskList from "./components/TaskList";
+import {DragDropContext, DropResult} from 'react-beautiful-dnd';
 
 //function App() {} transformer en fonction fléchée
 const App: React.FC = () => {
@@ -11,13 +12,16 @@ const App: React.FC = () => {
     const [toDo, setToDo] = useState<string>("");
     //useState stirng vide car utilisateur va noter son to Do + avec TS on note entre crochet le type voulu (ici string)
     //si ni <string> ni "", le type to DO est undifened et si juste <string>, type string | undifined, mettre "" = type string
-    //const [to Do, setToDO] = useState<string | number>("");
-    //On peut avoir plusieurs types = séparation par un pipe
-
-    console.log(toDo);
+    //const [to Do, setToDO] = useState<string | number>("") -> On peut avoir plusieurs types = séparation par un pipe
+    //console.log(toDo);
 
     const [toDos, setToDos] = useState<Todo[]>([]);
     //ensuite, nous allons créer un useState de notre tableau de to Do (du model avec id, message et boolean)
+
+    //Drag&Drop - utilisation de la librairie react-beautiful-dnd
+    //création du useState pour la partie Completed task (dans laquelle on va glisser les éléments)
+    const [completedTask, setCompletedTask] = useState<Todo[]>([]);
+
 
     const handleAdd = (e: React.FormEvent) => {
         e.preventDefault();
@@ -30,16 +34,51 @@ const App: React.FC = () => {
         //date.now(): est utilisé ici pour générer des randoms id, mais ça sert pas a ça de base (elle renvoie le nombre de millisecondes écoulées depuis le 1er Janvier 1970)
     }
 
-    console.log(toDos);
+    //la logique de Drag&Drog
+    const onDragEnd = (result: DropResult) => {
+        console.log(result);
+        const {source, destination} = result;
+
+        if(!destination) return;
+
+        if(destination.droppableId === source.droppableId && destination.index === source.index) return;
+
+        let add,
+            active = toDos,
+            completed = completedTask;
+
+        if (source.droppableId === "TaskList") {
+            add = active[source.index];
+            active.splice(source.index, 1);
+        }else {
+            add = completed[source.index];
+            completed.splice(source.index, 1);
+        }
+
+        if (destination.droppableId === "TaskList") {
+            active.splice(destination.index, 0, add);
+        }else {
+            completed.splice(destination.index, 0, add);
+        }
+
+        setCompletedTask(completed);
+        setCompletedTask(active);
+    }
+
+    //console.log(toDos);
 
         return (
+            <DragDropContext onDragEnd={onDragEnd} >
             <div className="App">
                 <h1 className="heading">Task App</h1>
                 <InputField toDo={toDo} setToDo={setToDo} handleAdd={handleAdd}/>
-                <TaskList toDos={toDos} setToDos={setToDos}/>
+                <TaskList toDos={toDos} setToDos={setToDos} completedTask={completedTask} setCompletedTask={setCompletedTask}/>
             </div>
+            </DragDropContext>
         );
 }
 //importation du useState dans le composant pour utiliser les données -> on transmet les valeurs avec les {}
+
+//  <DragDropContext onDragEnd={() => {}} > : envelopper la partie ou l'on va mettre en place le Drag&Drop
 
 export default App;

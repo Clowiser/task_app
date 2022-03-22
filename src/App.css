@@ -38,6 +38,7 @@ body {
   //box-shadow: 0 0 10px #282c34;
   background-color: #ffcc00;
   color: white;
+  cursor: pointer;
 }
 
 .button:hover{
@@ -66,7 +67,7 @@ body {
   margin: 3%;
 }
 
-.test{
+.todo__single{
   border-radius: 20px;
   background-color: #ffdb4f;
   color: #282c34;
@@ -76,6 +77,10 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: 5px 5px 10px #5f7a5e;
+}
+
+.todosremove .todo__single{
+  box-shadow: 5px 5px 10px #7c3434;
 }
 
 .titleTask{
@@ -89,11 +94,13 @@ body {
 
 .iconsImg{
   width: 15%;
+  cursor: pointer;
 }
 
 .iconsImg:active{
   transform: scale(0.8);
 }
+
 
 @media (max-width: 700px){
   .container{
