@@ -7,7 +7,7 @@ interface Props{
     //dispatch est une fonction Redux. Vous appelez store.dispatch pour envoyer une action.
     //C'est le seul moyen de déclencher un changement d'état.
     handleAdd:(e: React.FormEvent) => void;
-    //fonction
+    //fonction avec event de type formEvent
 }
 
 //on récupère donc les valeurs to Do et setToDo ici MAIS il y a qun problème de type S/ créer l'interface pour décrire les types

@@ -4,6 +4,7 @@ import InputField from './components/InputField';
 import {Todo} from "./model";
 import TaskList from "./components/TaskList";
 import {DragDropContext, DropResult} from 'react-beautiful-dnd';
+import Tutoreactts from "./components/Tutoreactts";
 
 //function App() {} transformer en fonction fléchée
 const App: React.FC = () => {
@@ -73,8 +74,10 @@ const App: React.FC = () => {
                 <h1 className="heading">Task App</h1>
                 <InputField toDo={toDo} setToDo={setToDo} handleAdd={handleAdd}/>
                 <TaskList toDos={toDos} setToDos={setToDos} completedTask={completedTask} setCompletedTask={setCompletedTask}/>
+                <Tutoreactts text={"Tutos React-TS"} />
             </div>
             </DragDropContext>
+
         );
 }
 //importation du useState dans le composant pour utiliser les données -> on transmet les valeurs avec les {}
