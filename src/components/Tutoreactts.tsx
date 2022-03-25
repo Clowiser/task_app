@@ -43,7 +43,7 @@ interface Props{
 //P1 - avec interface
 const Tutoreactts: React.FC<Props> = ({id: number, text: string}) => {
     return <div>
-            <p>Hello darkness, my old friend</p>
+
     </div>
 }
 

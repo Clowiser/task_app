@@ -40,10 +40,14 @@ const App: React.FC = () => {
         console.log(result);
         const {source, destination} = result;
 
+        //les conditions
         if(!destination) return;
+        //si la destination est nulle (n'existe pas), ne fais rien
 
         if(destination.droppableId === source.droppableId && destination.index === source.index) return;
+        //si la destination est la même que la source pour id et index, ne fais rien
 
+        //déclaration de 3 variables,
         let add,
             active = toDos,
             completed = completedTask;
@@ -63,7 +67,7 @@ const App: React.FC = () => {
         }
 
         setCompletedTask(completed);
-        setCompletedTask(active);
+        setToDos(active);
     }
 
     //console.log(toDos);

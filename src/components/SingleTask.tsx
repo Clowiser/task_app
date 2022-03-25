@@ -23,15 +23,16 @@ const SingleTask = ({index, todo, todos, setToDos}: Props) => {
     /*const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
         inputRef.current?.focus();
-    }, [edit]);*/
+    }, [edit]);
+    //ref or inputRef */
 
 
 
-    //CRUD React
-    //Done
+    //"CRUD" React
+    //Done or not done
     const handleDone = (id: number) => {
         setToDos(todos.map((todo) => todo.id === id ? {...todo, isDone: !todo.isDone } : todo))
-        //la j'ai plus de cerveau - A REVOIR
+        //
     }
 
     //Delete
@@ -49,12 +50,12 @@ const SingleTask = ({index, todo, todos, setToDos}: Props) => {
     };
 
     return (
-        <Draggable draggableId={todo.id.toString()} index={index}>
+        <Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
             {
                 (provided, snapshot) => (
                     <form
-                        className={`todo__single ${snapshot.isDragging ? "drag" : ""}`}
                         onSubmit={(e) => handleEdit(e, todo.id)}
+                        className={`todo__single ${snapshot.isDragging ? "drag" : ""}`}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}>
@@ -88,7 +89,6 @@ const SingleTask = ({index, todo, todos, setToDos}: Props) => {
                     </form>
                 )
             }
-
         </Draggable>
 
     )
